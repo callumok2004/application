@@ -1,0 +1,65 @@
+<!--
+  - 👋 Hey there, fella!
+  - 👀 Remember, it's okay to look but:
+  - 🚫 Don't copy. It's not nice, nor legal.
+  - ⭐ This site was made for RiseFM. No-one else.
+  - 🎨 Designed and Made by PiggyPlex (PiggyPlex#9993 on Discord).
+  - ⛔ Do not attempt to recreate or copy anything you see here - whether the code or the design without prior permission from PiggyPlex himself.
+-->
+<!DOCTYPE html>
+<html>
+    
+<head>       
+        <!-- Stylesheets -->
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="assets/css/main.css">
+    </head>
+    <body>
+        <audio id="stream" src="https://radio.risefm.net/radio/8000/radio.mp3"></audio>
+        <div class="page-content">
+            <img class="page-logo" src="assets/img/RiseFM%20Wordmark.png">
+            <div class="player">
+                <div class="player-image-container">
+                    <div class="player-image-overlay"></div>
+                    <i class="player-image-button play-button fa fa-play"></i>
+                    <img class="player-image song-art" src="assets/img/RiseFM.png">
+                </div>
+                <div class="stats">
+                    <div class="stats-content">
+                        <div class="stats-box gradient-background">
+                            <i class="fa fa-fw fa-microphone"></i>
+                            <span class="dj-name"></span>
+                        </div>
+                        <div class="stats-box">
+                            <i class="fa fa-fw fa-music" style="vertical-align:top;margin-top:2px;"></i>
+                            <span class="song-text"></span>
+                        </div>
+                        <div class="stats-box">
+                            <i class="fa fa-fw fa-headphones-alt"></i>
+                            <span class="listeners"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="player-image-container">
+                    <div class="player-image-overlay"></div>
+                    <!-- <i class="player-image-button fab fa-discord" id="discord-button"></i> -->
+                    <img class="player-image artist-image" src="assets/img/RiseFM.png">
+                </div>
+            </div>
+            <div class="countdown">
+                <div class="gradient-background" id="countdown">
+                    <span class="countdown-days"></span>:<span class="countdown-hours"></span>:<span class="countdown-minutes"></span>:<span class="countdown-seconds"></span>
+                </div>
+            </div>
+        </div>
+            <div class="credits">
+                Made with <i class="fa fa-heart"></i> by <span class="user-pill gradient-background"><i class="fa fa-fire"></i> PiggyPlex#9993 and MegaJoshy#0001</span>
+            </div>
+        <i class="mobile-play-button play-button fa fa-play"></i>
+        <!-- Scripts -->
+        <script src="assets/js/ext/fontawesome.js"></script>
+        <script src="assets/js/ext/fetchjsonp.js"></script>
+        <script src="assets/js/ext/jquery.js"></script>
+        <script src="assets/js/countdown.js"></script>
+    </body>
+</html>
