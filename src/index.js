@@ -81,7 +81,7 @@ const options = {
 };
 
  app.whenReady().then(() => {
-  globalShortcut.register('MediaPlayPause', () => togglePlay);
+  globalShortcut.register('MediaPlayPause', () => togglePlay); // this will work one day
 })
 
 const updateSong = async () => {
