@@ -73,13 +73,6 @@ app.on('activate', () => {
   }
 });
 
-// The dialog box is just to show proof of concept for now
-const options = {
-  type: 'none',
-  message: 'Pressed Play/Pause',
-  buttons: []
-};
-
  app.whenReady().then(() => {
   globalShortcut.register('MediaPlayPause', () => togglePlay); // this will work one day
 })
