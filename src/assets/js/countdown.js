@@ -123,7 +123,7 @@ setInterval(updateCountdown, 1000);
 togglePlay();
 
 $('.play-button').click(togglePlay);
-const shell = require('electron').shell
+// const shell = require('electron').shell
 // $('#discord-button').click(() => {
 //     shell.openExternal('https://discord.gg/StAHvCF');
 // });
