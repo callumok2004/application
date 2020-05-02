@@ -1,7 +1,7 @@
 {
   "name": "risefm",
   "productName": "risefm",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "An application for RiseFM.net!",
   "main": "src/index.js",
   "scripts": {
