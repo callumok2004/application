@@ -79,7 +79,6 @@ app.on('activate', () => {
   }
 });
 
-
 const updateSong = async () => {
   try {
     let data = await (await fetch(`https://radio.risefm.net/api/nowplaying/1`)).json();
