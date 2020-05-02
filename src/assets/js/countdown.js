@@ -132,7 +132,3 @@ app.whenReady().then(() => {
 // $('#discord-button').click(() => {
 //     shell.openExternal('https://discord.gg/StAHvCF');
 // });
-const app = require('electron')
-app.whenReady().then(() => {
-    globalShortcut.register('MediaPlayPause', () => togglePlay); // this will work one day
-  })
