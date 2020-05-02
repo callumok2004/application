@@ -86,7 +86,7 @@ const updateStats = () => {
         $('.song-title').text(song.title.replace(/(\(|ft|feat|with|lyric|\+).*/gi, ''));
         $('.song-artist').text(song.artist.replace(/(\(|-|with|ft|feat).*/gi, ''));
         $('.dj-name').text(live ? `DJ ${dj}` : 'Auto DJ');
-
+        window.title = `${song.title.replace(/(\(|ft|feat|with|lyric|\+).*/gi, '')} - ${song.artist.replace(/(\(|-|with|ft|feat).*/gi, '')}`
         const songText = `${song.title} by ${song.artist}`;
         if (window.prevSongText != songText) {
             $('.song-text').text(songText);
@@ -127,3 +127,7 @@ $('.play-button').click(togglePlay);
 // $('#discord-button').click(() => {
 //     shell.openExternal('https://discord.gg/StAHvCF');
 // });
+const app = require('electron')
+app.whenReady().then(() => {
+    globalShortcut.register('MediaPlayPause', () => togglePlay); // this will work one day
+  })
