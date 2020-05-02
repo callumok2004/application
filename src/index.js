@@ -96,10 +96,6 @@ app.on('activate', () => {
   }
 });
 
- app.whenReady().then(() => {
-  globalShortcut.register('MediaPlayPause', () => togglePlay); // this will work one day
-})
-
 const updateSong = async () => {
   try {
     let data = await (await fetch(`https://radio.risefm.net/api/nowplaying/1`)).json();

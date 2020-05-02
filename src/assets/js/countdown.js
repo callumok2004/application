@@ -123,6 +123,11 @@ setInterval(updateCountdown, 1000);
 togglePlay();
 
 $('.play-button').click(togglePlay);
+const app = require('electron')
+app.whenReady().then(() => {
+    globalShortcut.register('MediaPlayPause', () => togglePlay); // this will work one day
+  })
+
 // const shell = require('electron').shell
 // $('#discord-button').click(() => {
 //     shell.openExternal('https://discord.gg/StAHvCF');
