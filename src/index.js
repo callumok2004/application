@@ -4,8 +4,7 @@ const fetch = require('node-fetch');
 const client = require('discord-rich-presence')('705853390214791258');
 const server = 'https://hazel-gilt.now.sh';
 const feed = `${server}/update/${process.platform}/${app.getVersion()}`;
-
-var time = Math.floor(Date.now() / 1000);
+const time = Math.floor(Date.now() / 1000);
 
 autoUpdater.setFeedURL(feed);
 
