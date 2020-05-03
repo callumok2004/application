@@ -5,6 +5,8 @@ const client = require('discord-rich-presence')('705853390214791258');
 const server = 'https://hazel-gilt.now.sh';
 const feed = `${server}/update/${process.platform}/${app.getVersion()}`;
 
+var time = Math.floor(Date.now() / 1000);
+
 autoUpdater.setFeedURL(feed);
 
 setInterval(() => {
@@ -71,7 +73,6 @@ app.on('activate', () => {
     createWindow();
   }
 });
-const time = Date.now();
 const updateSong = async () => {
   try {
     let data = await (await fetch(`https://radio.risefm.net/api/nowplaying/1`)).json();
