@@ -1,11 +1,12 @@
-const { app, BrowserWindow, Menu, autoUpdater, dialog, globalShortcut } = require('electron');
-const shell = require('electron').shell
+const { app, BrowserWindow, autoUpdater, dialog } = require('electron');
+const shell = require('electron').shell;
 const fetch = require('node-fetch');
-const client = require('discord-rich-presence')('705853390214791258'); 
-const server = 'https://hazel-gilt.now.sh'
-const feed = `${server}/update/${process.platform}/${app.getVersion()}`
+const client = require('discord-rich-presence')('705853390214791258');
+const server = 'https://hazel-gilt.now.sh';
+const feed = `${server}/update/${process.platform}/${app.getVersion()}`;
 
-autoUpdater.setFeedURL(feed)
+autoUpdater.setFeedURL(feed);
+autoUpdater.checkForUpdates();
 
 setInterval(() => {
   autoUpdater.checkForUpdates()
@@ -14,8 +15,8 @@ setInterval(() => {
 autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
   const dialogOpts = {
     type: 'info',
-    buttons: ['Restart', 'Later'],
-    title: 'Application Update',
+    buttons: ["Restart", "Later"],
+    title: 'Update Available!',
     message: process.platform === 'win32' ? releaseNotes : releaseName,
     detail: 'A new version has been downloaded. Restart the application to apply the updates.'
   }
@@ -41,31 +42,25 @@ const createWindow = () => {
     width: 700,
     height: 400,
     frame: false,
-    transparent:true
+    transparent: true
   })
 
   mainWindow.loadURL(`file://${__dirname}/index.html`);
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
+  mainWindow.webContents.on('new-window', function (e, url) {
+    if ('file://' === url.substr(0, 'file://'.length)) {
+      return;
+    }
+    e.preventDefault();
+    shell.openExternal(url);
+  });
 };
- app.on('ready', function(){
-   createWindow()
-   const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
-  //  Menu.setApplicationMenu(mainMenu);
- })
- 
- const mainMenuTemplate = [
-   {
-     label: 'RiseFM',
-     submenu: [
-       {label:'Discord',
-        click() {
-          shell.openExternal('https://discord.gg/sSt9PHd')
-        }}
-     ]
-   }
- ];
+app.on('ready', function () {
+  createWindow()
+})
+
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
@@ -77,19 +72,27 @@ app.on('activate', () => {
     createWindow();
   }
 });
-
+const time = Date.now();
 const updateSong = async () => {
   try {
     let data = await (await fetch(`https://radio.risefm.net/api/nowplaying/1`)).json();
-    let { now_playing: np } = data;
-    let { song } = np;
-    let { artist, title} = song;
+    let {
+      now_playing: np
+    } = data;
+    let {
+      song
+    } = np;
+    let {
+      artist,
+      title
+    } = song;
     client.updatePresence({
       details: `Listening to RiseFM`,
       state: `${title} by ${artist}`,
       largeImageKey: 'icon',
       largeImageText: 'risefm.net',
       instance: true,
+      startTimestamp: time
     });
   } catch (err) {
     console.error(err);

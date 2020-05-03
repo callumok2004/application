@@ -4,11 +4,14 @@
     🚫 Don't copy. It's not nice, nor legal.
     ⭐ This site was made for RiseFM. No-one else.
     🎨 Designed and Made by PiggyPlex (PiggyPlex#9993 on Discord).
+    🔧 Edited by Callum (Callum#6052 on Discord) & MegaJoshy (MegaJoshy#0001) for use in the RiseFM application.
     ⛔ Do not attempt to recreate or copy anything you see here - whether the code or the design without prior permission from PiggyPlex himself.
 */
 
-  
 window.onload = () => { 
+    $.getJSON("../package.json", data => {
+        $("#ver").html(`v${data.version}`);
+    })
     let count = 0;
     setInterval(() => {
         const cd = $("#cd");
@@ -29,7 +32,6 @@ const togglePlay = () => {
         button.removeClass('fa-play');
         button.removeClass('fa-pause');
         button.addClass('fa-spinner-third');
-        stream.attr('src', 'https://radio.risefm.net/radio/8000/radio.mp3');
         stream[0].volume = 0.5;
         stream[0].play()
         .then(() => {
@@ -44,7 +46,6 @@ const togglePlay = () => {
         });
     } else {
         stream[0].pause();
-        stream.attr('src', '');
         button.removeClass('fa-pause');
         button.removeClass('fa-spinner-third');
         button.addClass('fa-play');
@@ -80,12 +81,8 @@ const updateStats = () => {
             song_history: history
         } = res;
         fetchJsonp('https://api.deezer.com/search/track/autocomplete?limit=1&q='+np.song.text+'&output=jsonp')
-        .then((res) => res.json())
-        .then((res) => {
-            /*
-                Artist: res.data[0].artist.picture
-                Album Art: res.data[0].album.cover
-            */
+        .then(res => res.json())
+        .then(res => {
             if (res.data[0]) {
                 $('.song-art').attr('src', res.data[0].album.cover || `./assets/img/RiseFM.png`);
                 $('.artist-image').attr('src', res.data[0].artist.picture || `./assets/img/RiseFM.png`);
@@ -102,7 +99,6 @@ const updateStats = () => {
         $('.song-title').text(song.title.replace(/(\(|ft|feat|with|lyric|\+).*/gi, ''));
         $('.song-artist').text(song.artist.replace(/(\(|-|with|ft|feat).*/gi, ''));
         $('.dj-name').text(live ? `DJ ${dj}` : 'Auto DJ');
-        window.title = `${song.title.replace(/(\(|ft|feat|with|lyric|\+).*/gi, '')} - ${song.artist.replace(/(\(|-|with|ft|feat).*/gi, '')}`
         const songText = `${song.title} by ${song.artist}`;
         if (window.prevSongText != songText) {
             $('.song-text').text(songText);
@@ -133,7 +129,3 @@ setInterval(updateCountdown, 1000);
 togglePlay();
 
 $('.play-button').click(togglePlay);
-const app = require('electron')
-app.whenReady().then(() => {
-    globalShortcut.register('MediaPlayPause', () => togglePlay);
-  })
