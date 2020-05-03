@@ -8,23 +8,26 @@
 -->
 <!DOCTYPE html>
 <html>
-    
-<head>       
+
+<head>
+        <title>RiseFM &bullet; Countdown</title>
         <!-- Stylesheets -->
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="assets/css/main.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./assets/css/main.css">
     </head>
     <body>
         <a href="#" onclick="window.close()" title="Close" style="position:absolute;top:5%;right:3%;"><i class="far fa-times fa-2x"></i></a>
-        <a id="delay" href="#" onclick="window.location.reload(false)" style="position:absolute;top:5%;right:95%;"><i class="fas fa-redo-alt fa-lg"></i></a>
         <audio id="stream" src="https://radio.risefm.net/radio/8000/radio.mp3"></audio>
         <div class="page-content">
-            <img class="page-logo" src="assets/img/RiseFM%20Wordmark.png">
+            <img class="page-logo" src="./assets/img/RiseFM Wordmark.png">
             <div class="player">
-                <div class="player-image-container">
+                <div class="player-image-container left">
                     <div class="player-image-overlay"></div>
+                    <div class="volume-container">
+                        <input type="range" orient="vertical" min="0.01" max="1" value="0.5" step="0.01" class="slider volume-slider">
+                    </div>
                     <i class="player-image-button play-button fa fa-play"></i>
-                    <img class="player-image song-art" src="assets/img/RiseFM.png">
+                    <img class="player-image song-art" src="./assets/img/RiseFM.png">
                 </div>
                 <div class="stats">
                     <div class="stats-content">
@@ -45,21 +48,20 @@
                 <div class="player-image-container">
                     <div class="player-image-overlay"></div>
                     <!-- <i class="player-image-button fab fa-discord" id="discord-button"></i> -->
-                    <img class="player-image artist-image" src="assets/img/RiseFM.png">
+                    <img class="player-image artist-image" src="./assets/img/RiseFM.png">
                 </div>
             </div>
-            <div class="countdown" id="cd" style="display:none;">
-                     The stream is delayed by <span id="del"></span> seconds, click the reload icon to refresh the stream!
+            <div class="countdown">
+                <div class="gradient-background" id="countdown">
+                    <span class="countdown-days"></span>:<span class="countdown-hours"></span>:<span class="countdown-minutes"></span>:<span class="countdown-seconds"></span>
+                </div>
             </div>
         </div>
-            <!-- <div class="credits">
-                Made with <i class="fa fa-heart"></i> by <span class="user-pill gradient-background"><i class="fa fa-fire"></i> PiggyPlex#9993</span>
-            </div> -->
         <i class="mobile-play-button play-button fa fa-play"></i>
         <!-- Scripts -->
-        <script src="assets/js/ext/fontawesome.js"></script>
-        <script src="assets/js/ext/fetchjsonp.js"></script>
-        <script src="assets/js/ext/jquery.js"></script>
-        <script src="assets/js/countdown.js"></script>
+        <script src="./assets/js/ext/fontawesome.js"></script>
+        <script src="./assets/js/ext/fetchjsonp.js"></script>
+        <script src="./assets/js/ext/jquery.js"></script>
+        <script src="./assets/js/countdown.js"></script>
     </body>
 </html>

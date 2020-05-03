@@ -7,20 +7,16 @@
     ⛔ Do not attempt to recreate or copy anything you see here - whether the code or the design without prior permission from PiggyPlex himself.
 */
 
-  
-window.onload = () => { 
-    let count = 0;
-    setInterval(() => {
-        const cd = $("#cd");
-        const delay = $("#del");
-        const stream = $('#stream')[0];
-        if(stream.paused) {
-            count++
-            delay.html(count);
-            cd.fadeIn("slow");
-        }
-    }, 1000)
-}
+const checkVolume = () => {
+    $('.volume-slider').val($('.volume-slider').val());
+    $('#stream')[0].volume = $('.volume-slider').val();
+};
+
+$('.volume-slider')
+.on('click', checkVolume)
+.on('mousemove', checkVolume)
+.on('mousedown', checkVolume)
+.on('mouseup', checkVolume);
 
 const togglePlay = () => {
     const stream = $('#stream');
@@ -30,7 +26,7 @@ const togglePlay = () => {
         button.removeClass('fa-pause');
         button.addClass('fa-spinner-third');
         stream.attr('src', 'https://radio.risefm.net/radio/8000/radio.mp3');
-        stream[0].volume = 0.5;
+        checkVolume();
         stream[0].play()
         .then(() => {
             button.removeClass('fa-play');
@@ -102,7 +98,6 @@ const updateStats = () => {
         $('.song-title').text(song.title.replace(/(\(|ft|feat|with|lyric|\+).*/gi, ''));
         $('.song-artist').text(song.artist.replace(/(\(|-|with|ft|feat).*/gi, ''));
         $('.dj-name').text(live ? `DJ ${dj}` : 'Auto DJ');
-        window.title = `${song.title.replace(/(\(|ft|feat|with|lyric|\+).*/gi, '')} - ${song.artist.replace(/(\(|-|with|ft|feat).*/gi, '')}`
         const songText = `${song.title} by ${song.artist}`;
         if (window.prevSongText != songText) {
             $('.song-text').text(songText);

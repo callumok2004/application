@@ -38,7 +38,7 @@ let mainWindow;
 
 const createWindow = () => {
   mainWindow = new BrowserWindow({
-    width: 700,
+    width: 750,
     height: 400,
     frame: false,
     transparent:true
