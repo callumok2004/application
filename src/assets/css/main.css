@@ -4,6 +4,7 @@
     🚫 Don't copy. It's not nice, nor legal.
     ⭐ This site was made for RiseFM. No-one else.
     🎨 Designed and Made by PiggyPlex (PiggyPlex#9993 on Discord).
+    🔧 Edited by Callum (Callum#6052 on Discord) & MegaJoshy (MegaJoshy#0001) for use in the RiseFM application.
     ⛔ Do not attempt to recreate or copy anything you see here - whether the code or the design without prior permission from PiggyPlex himself.
 */
 html, body {
@@ -308,4 +309,20 @@ input[type=range][orient=vertical] {
         background: transparent;
         box-shadow: none;
     }
+}
+
+.footer {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+  }
+
+#ver {
+    float:left;
+    opacity: .5;
+}
+
+#socials {
+    float:right;
+    margin-right: 25px;
 }

@@ -4,6 +4,7 @@
   - 🚫 Don't copy. It's not nice, nor legal.
   - ⭐ This site was made for RiseFM. No-one else.
   - 🎨 Designed and Made by PiggyPlex (PiggyPlex#9993 on Discord).
+  -  🔧 Edited by Callum (Callum#6052 on Discord) & MegaJoshy (MegaJoshy#0001) for use in the RiseFM application.
   - ⛔ Do not attempt to recreate or copy anything you see here - whether the code or the design without prior permission from PiggyPlex himself.
 -->
 <!DOCTYPE html>
@@ -17,6 +18,7 @@
     </head>
     <body>
         <a href="#" onclick="window.close()" title="Close" style="position:absolute;top:5%;right:3%;"><i class="far fa-times fa-2x"></i></a>
+        <a id="delay" href="#" onclick="window.location.reload(false)" style="position:absolute;top:5%;right:94.7%;"><i class="fas fa-redo-alt fa-lg"></i></a>
         <audio id="stream" src="https://radio.risefm.net/radio/8000/radio.mp3"></audio>
         <div class="page-content">
             <img class="page-logo" src="./assets/img/RiseFM Wordmark.png">
@@ -58,6 +60,12 @@
             </div>
         </div>
         <i class="mobile-play-button play-button fa fa-play"></i>
+        <div class="footer">
+            <span id="ver"></span>
+            <span id="socials">
+                <a class="fab fa-discord fa-lg" href="https://discord.gg/tTTCSUB" target="_blank"></a>
+            </span>
+        </div>
         <!-- Scripts -->
         <script src="./assets/js/ext/fontawesome.js"></script>
         <script src="./assets/js/ext/fetchjsonp.js"></script>

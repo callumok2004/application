@@ -4,6 +4,7 @@
     🚫 Don't copy. It's not nice, nor legal.
     ⭐ This site was made for RiseFM. No-one else.
     🎨 Designed and Made by PiggyPlex (PiggyPlex#9993 on Discord).
+    🔧 Edited by Callum (Callum#6052 on Discord) & MegaJoshy (MegaJoshy#0001) for use in the RiseFM application.
     ⛔ Do not attempt to recreate or copy anything you see here - whether the code or the design without prior permission from PiggyPlex himself.
 */
 
@@ -17,6 +18,22 @@ $('.volume-slider')
 .on('mousemove', checkVolume)
 .on('mousedown', checkVolume)
 .on('mouseup', checkVolume);
+window.onload = () => { 
+    $.getJSON("../package.json", data => {
+        $("#ver").html(`v${data.version}`);
+    })
+    let count = 0;
+    setInterval(() => {
+        const cd = $("#cd");
+        const delay = $("#del");
+        const stream = $('#stream')[0];
+        if(stream.paused) {
+            count++
+            delay.html(count);
+            cd.fadeIn("slow");
+        }
+    }, 1000)
+}
 
 const togglePlay = () => {
     const stream = $('#stream');
@@ -40,7 +57,6 @@ const togglePlay = () => {
         });
     } else {
         stream[0].pause();
-        stream.attr('src', '');
         button.removeClass('fa-pause');
         button.removeClass('fa-spinner-third');
         button.addClass('fa-play');
@@ -76,12 +92,8 @@ const updateStats = () => {
             song_history: history
         } = res;
         fetchJsonp('https://api.deezer.com/search/track/autocomplete?limit=1&q='+np.song.text+'&output=jsonp')
-        .then((res) => res.json())
-        .then((res) => {
-            /*
-                Artist: res.data[0].artist.picture
-                Album Art: res.data[0].album.cover
-            */
+        .then(res => res.json())
+        .then(res => {
             if (res.data[0]) {
                 $('.song-art').attr('src', res.data[0].album.cover || `./assets/img/RiseFM.png`);
                 $('.artist-image').attr('src', res.data[0].artist.picture || `./assets/img/RiseFM.png`);
@@ -128,7 +140,3 @@ setInterval(updateCountdown, 1000);
 togglePlay();
 
 $('.play-button').click(togglePlay);
-const app = require('electron')
-app.whenReady().then(() => {
-    globalShortcut.register('MediaPlayPause', () => togglePlay);
-  })
