@@ -42,10 +42,9 @@ const createWindow = () => {
     height: 400,
     frame: false,
     transparent:true
-  });
+  })
 
   mainWindow.loadURL(`file://${__dirname}/index.html`);
-
   mainWindow.on('closed', () => {
     mainWindow = null;
   });

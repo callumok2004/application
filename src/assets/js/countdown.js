@@ -6,6 +6,22 @@
     🎨 Designed and Made by PiggyPlex (PiggyPlex#9993 on Discord).
     ⛔ Do not attempt to recreate or copy anything you see here - whether the code or the design without prior permission from PiggyPlex himself.
 */
+
+  
+window.onload = () => { 
+    let count = 0;
+    setInterval(() => {
+        const cd = $("#cd");
+        const delay = $("#del");
+        const stream = $('#stream')[0];
+        if(stream.paused) {
+            count++
+            delay.html(count);
+            cd.fadeIn("slow");
+        }
+    }, 1000)
+}
+
 const togglePlay = () => {
     const stream = $('#stream');
     const button = $('.play-button');
@@ -110,12 +126,6 @@ const updateStats = () => {
     });
 };
 
-const openWindow = (url, width, height, title = '') => {
-    const x = window.top.outerWidth / 2 + window.top.screenX - ( width / 2),
-          y = window.top.outerHeight / 2 + window.top.screenY - ( height / 2);
-    return window.open(url, title, `toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=${width}, height=${height}, top=${y}, left=${x}`);
-};
-
 updateStats();
 setInterval(updateStats, 5000);
 updateCountdown();
@@ -125,14 +135,5 @@ togglePlay();
 $('.play-button').click(togglePlay);
 const app = require('electron')
 app.whenReady().then(() => {
-    globalShortcut.register('MediaPlayPause', () => togglePlay); // this will work one day
-  })
-
-// const shell = require('electron').shell
-// $('#discord-button').click(() => {
-//     shell.openExternal('https://discord.gg/StAHvCF');
-// });
-const app = require('electron')
-app.whenReady().then(() => {
-    globalShortcut.register('MediaPlayPause', () => togglePlay); // this will work one day
+    globalShortcut.register('MediaPlayPause', () => togglePlay);
   })
