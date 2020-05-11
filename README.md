@@ -2,6 +2,9 @@
 
 # RiseFM Application
 
+# Important Announcements
+I do not work at RiseFM anymore, I will update this application however and fix any issues that may occur. 
+
 # Download
 For now this application is only on Windows 64 bit, you can download it below. 
 Windows: [here](https://hazel-gilt.now.sh/download/)
