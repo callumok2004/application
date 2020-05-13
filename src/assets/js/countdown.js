@@ -88,8 +88,7 @@ const updateStats = () => {
             now_playing: np,
             now_playing: {
                 song
-            },
-            song_history: history
+            }
         } = res;
         fetchJsonp('https://api.deezer.com/search/track/autocomplete?limit=1&q='+np.song.text+'&output=jsonp')
         .then(res => res.json())
