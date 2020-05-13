@@ -42,7 +42,7 @@ const togglePlay = () => {
         button.removeClass('fa-play');
         button.removeClass('fa-pause');
         button.addClass('fa-spinner-third');
-        stream.attr('src', 'https://radio.risefm.net/radio/8000/radio.mp3');
+        stream.attr('src', 'https://live.risefm.net');
         checkVolume();
         stream[0].play()
         .then(() => {
@@ -64,7 +64,7 @@ const togglePlay = () => {
 };
 const updateCountdown = () => {
     const pad = (a) => a.toString().length == 1 ? `0${a}` : a;
-    const distance = new Date('Jun 1, 2020 00:00:00').getTime() - new Date().getTime(),
+    const distance = new Date('May 23, 2020 19:30:00').getTime() - new Date().getTime(),
           D = Math.floor(distance / (1000 * 60 * 60 * 24)),
           h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
           m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
