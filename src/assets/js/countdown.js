@@ -42,7 +42,7 @@ const togglePlay = () => {
         button.removeClass('fa-play');
         button.removeClass('fa-pause');
         button.addClass('fa-spinner-third');
-        stream.attr('src', 'https://radio.risefm.net/radio/8000/radio.mp3');
+        stream.attr('src', 'https://live.risefm.net/risefm');
         checkVolume();
         stream[0].play()
         .then(() => {
